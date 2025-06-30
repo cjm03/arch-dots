@@ -1,13 +1,14 @@
 [general]
 import = [
-    "~/.config/alacritty/burzum.toml",
+    "~/.config/alacritty/citruszest.toml",
 ]
 
 [env]
+# TERM = "screen-256color"
 TERM = "xterm-256color"
 
 [colors]
-transparent_background_colors = true
+transparent_background_colors = false
 draw_bold_text_with_bright_colors = true
 
 [window]
@@ -17,7 +18,7 @@ opacity = 1.0
 blur = false
 # opacity = 0.75
 # blur = true
-dynamic_padding = true
+dynamic_padding = false
 
 [mouse]
 hide_when_typing = true

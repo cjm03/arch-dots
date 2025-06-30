@@ -19,20 +19,19 @@ vim.opt.cmdheight = 0
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
 
-vim.o.statuscolumn = [[%!v:lua.StatusColumn()]]
-function _G.StatusColumn()
+-- vim.o.statuscolumn = [[%!v:lua.StatusColumn()]]
+-- function _G.StatusColumn()
 --     local relnum = vim.v.relnum
-    local linenum = vim.v.lnum
+--     local linenum = vim.v.lnum
 --     if relnum == 0 then
-    return "%#LineNrAbsolute#"..string.format("%d    ", linenum)
+--         return "%#LineNrAbsolute#"..string.format("%d    ", linenum)
 --     else
 --         return "%#LineNrRelative#"..string.format("  %d   ", relnum)
 --     end
-end
+-- end
 --
 vim.opt.signcolumn = "auto:1"
 
--- LineNr , LineNrAbove , LineNrBelow
 
 
 

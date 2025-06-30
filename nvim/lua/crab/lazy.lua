@@ -29,7 +29,15 @@ require("lazy").setup(
         },
     }
 )
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ddeecc", bg = "#000000" })
+-- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ddeecc", bg = "#0a0c10" })
+
+-- vim.api.nvim_create_user_command("OpenPdf", function()
+--     local filepath = vim.api.nvim_buf_get_name(0)
+--     if filepath:match("%.typ$") then
+--         local pdf_path = filepath:gsub("%.typ$", ".pdf")
+--         vim.system({ "open", pdf_path })
+--     end
+-- end, {})
 
 -- vim.api.nvim_set_hl(0, "LineNrAbsolute", { fg = "#ddeecc", bg = "#000000", bold = true })
 -- vim.api.nvim_set_hl(0, "LineNrRelative", { fg = "#c1c1c1", bg = "#000000" })

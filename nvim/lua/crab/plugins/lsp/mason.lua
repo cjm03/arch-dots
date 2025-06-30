@@ -33,6 +33,7 @@ return {
                 "bashls",
                 "asm_lsp",
                 "ast_grep",
+                "tinymist",
                 "html"
             },
         })

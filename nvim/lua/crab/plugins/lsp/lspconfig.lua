@@ -29,10 +29,10 @@ return {
         })
 
         local signs = {
-            [vim.diagnostic.severity.ERROR] = " ",
-            [vim.diagnostic.severity.WARN]  = " ",
-            [vim.diagnostic.severity.HINT]  = "󰠠 ",
-            [vim.diagnostic.severity.INFO]  = " ",
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN]  = "",
+            [vim.diagnostic.severity.HINT]  = "󰠠",
+            [vim.diagnostic.severity.INFO]  = "",
         }
 
         -- Set the diagnostic config with all icons
@@ -94,6 +94,32 @@ return {
             capabilities = capabilities,
         })
 
+        require("lspconfig")["tinymist"].setup({
+            capabilities = capabilities,
+            settings = {
+                formatterMode = "typstyle",
+                exportPdf = "never",
+                semanticTokens = "enable"
+            },
+            on_attach = function(client, bufnr)
+                vim.keymap.set("n", "<leader>Pp", function()
+                    client:exec_cmd({
+                        title = "pin",
+                        command = "tinymist.pinMain",
+                        arguments = { vim.api.nvim_buf_get_name(0) },
+                    }, { bufnr = bufnr })
+                end, { desc = "tinymist pin", noremap = true })
+
+                vim.keymap.set("n", "<leader>Px", function()
+                    client:exec_cmd({
+                        title = "unpin",
+                        command = "tinymist.pinMain",
+                        arguments = { vim.v.null },
+                    }, { bufnr = bufnr })
+                end, { desc = "tinymist unpin", noremap = true })
+            end,
+        })
+
         require("lspconfig").clangd.setup({
             cmd = {
                 "clangd",
@@ -111,7 +137,7 @@ return {
                 completeUnimported = true,
                 clangdFileStatus = true,
             },
-            filetypes = { "c", "objc", "h", "cpp" },
+            filetypes = { "c", "h", "cpp" },
             capabilities = capabilities,
         })
     end,

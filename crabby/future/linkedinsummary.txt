@@ -1,0 +1,26 @@
+I'm a fourth year at IU majoring in Computer Science, specializing in Security.
+In my 6th semester I switched majors from Cybersecurity & Global Policy to CS as
+I realized the degree was placing much more importance on global policy,
+leaving my passion for programming unsatisfied. In that regard I hold no regrets.
+
+As a computer science student I am exposed to a wide variety of tools, languages,
+and methodologies to leverage when working on a project or assignment. This
+exposure is essential for developing the confidence to take risks such as
+providing an alternative, creative solution to a problem that may have
+historically been solved in an inefficient manner. My desire for solutions that
+are both lightweight and highly efficient was not adequately satisfied with
+Python, which quickly led me to the antagonizing journey into the C programming
+language, and eventually a great deal of respect for the flexibility it allows by
+operating on a much lower level in comparison to a language like Python. As my
+confidence with C continues to grow, the once seemingly incomprehensible
+complexity of modern computers is slowly turning into a (slightly) more navigable
+territory in which the compiler and I are in a constant fight for control.
+
+Halfway through my second year at IU, I pivoted almost all of my spare time to
+learning everything I could about computers to start chipping away at the
+never-ending pile of abstraction layers. At that time I had just finished
+Mathematical Foundations of Informatics and was about to begin my first course
+in Python alongside an Intro to the Mathematics of Cybersecurity, both of which
+opened my eyes to the incomprehensible complexity of modern computers. Python was
+not enough for me at the time because it felt way too easy, almost as if I was
+verbally talking to the computer and it was performing my requests without question.

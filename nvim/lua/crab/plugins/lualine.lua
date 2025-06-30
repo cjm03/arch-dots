@@ -4,7 +4,8 @@ return {
     config = function()
         require("lualine").setup({
             options = {
-                theme = "auto",
+                -- theme = "auto",
+                theme = 'citruszest',
                 global_status = false,
                 section_separators = '',
                 component_separators = '',
