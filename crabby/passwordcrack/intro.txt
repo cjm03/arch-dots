@@ -1,0 +1,34 @@
+Passwords are hashed when stored.
+    Hashing: mathematical function which transforms an arbitrary number of input bytes into a (typically) fixed-size output
+        examples are MD5, SHA256
+    Consider the password "Soccer06!". Here is the result of both md5 and sha256:
+        MD5:  40291c1d19ee11a7df8495c4cccefdfa  -
+        SHA256:  a025dc6fabb09c2b8bfe23b5944635f9b68433ebd9a1a09453dd4fee00766d93  -
+
+Since hash functions are designed to be one-way functions, an attacker shouldn't be able to figure out the original password.
+An attempt at this is considered password cracking.
+    Common techniques are 
+        rainbow tables
+        dictionary attacks
+        brute-force attacks
+
+    Rainbow Tables
+        Large, precompiled maps of input and output values for a given hash function.
+        Can be used to quickly identify the password if its corresponding hash has already been mapped.
+
+        To mitigate their effectiveness, salting is used.
+            Salt: a random sequence of bytes added to a password before it is hashed.
+                For maximum impact, do not reuse salts.
+                If the salt "Th1sIsTh3S@lt_" is prepended to the same password, the MD5 hash would now be
+                    MD5 (salted):  90a10ba83c04e7996bc53373170b5474  -
+
+    Brute-Force Attacks
+        Exactly what it sounds like.
+        Very time consuming, however passwords < 9 characters are viable targets on consumer hardware.
+        Only technique that is 100% effective, but requires time.
+        Hardly used, typically replaced by much more efficient mask attacks.
+
+    Dictionary Attacks
+        aka Wordlist Attack.
+        One of the most efficient techniques, especially when operating under time-constraints.
+        Utilizes a list containing statistically likely passwords.

@@ -6,7 +6,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
-exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper/gloomyforest.png
+exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper/arsenic.jpg
 
 # exec_always --no-startup-id xrandr --output DP-3 --primary --left-of HDMI-1
 # exec_always --no-startup-id xrandr --output DP-3 --primary --mode 2560x1440 --pos 0x0 --output HDMI-1 --mode 1920x1080 --pos 2560x0
@@ -21,7 +21,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-default_border pixel 4
+default_border pixel 2
 gaps inner 4
 gaps outer 4
 
@@ -171,10 +171,10 @@ bar {
 
 # Window colors         #205c24
 # class                 border  backgr. text    indicator child_border
-client.focused          #19451c #19451c #ffffff #19451c   #19451c
+client.focused          #000000 #000000 #ffffff #000000   #000000
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-client.background       #ffffff
+client.background       #888888 #888888 

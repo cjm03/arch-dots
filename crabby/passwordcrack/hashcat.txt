@@ -1,0 +1,88 @@
+Hashcat is a well-known password cracking tool for Linux, Windows, and macOS.
+Proprietary software from 2009-2015, but has since been released as open source.
+Similar to JtR, hashcat supports multiple attack modes.
+General syntax to run hashcat:
+
+    $ hashcat -a 0 -m 0 <hashes> [wordlist, rule, mask, ...]
+
+        -a                              specifies attack mode
+        -m                              specifies hash type
+        <hashes>                        either a hash string or file containing one or more password hashes of the same type
+        [wordlist, rule, mask, ...]     placeholder for additional arguments that depend on the attack mode
+
+Hash Types
+
+    Hashcat supports hundreds of different hash types, each is assigned an ID.
+    The list of associated ID's can be generated with:
+
+        $ hashcat --help
+
+    The hashcat website also has a comprehensive list of example hashes to assist with manually identifying an unknown hash type.
+    hashID can also be used to quickly identify the hashcat hash type by specifying the '-m' argument:
+
+        $ hashid -m '$1$FNr44XZC$wQxY6HHLrgrGX0e1195k.1'
+
+Attack Modes
+
+    Hashcat has dictionary, mask, combinator, and association attack modes.
+    Dictionary and Mask are the most common.
+
+    Dictionary Attack ( -a 0 )
+
+        User provides password hashes and a wordlist as input, and hashcat tests each word in the list as a potential password.
+            It will continue until the correct one is found or the list is exhausted.
+        Consider this password hash extracted from an SQL database:
+
+            e3e3ec5831ad5e7288241960e5d4fdb8
+
+        First, we can identify this as an MD5 hash, which has a hash ID of 0.
+        To attempt to crack this using rockyou.txt, use the following:
+
+            $ hashcat -a 0 -m 0 e3e3ec5831ad5e7288241960e5d4fdb8 /Users/crab/crabby/wordlists/Passwords/Leaked-Databases/rockyou-75.txt
+
+        A wordlist is normally not enough to crack a password hash.
+        Like with JtR, `rules` can be used to perform specific modifications to passwords to generate even more guesses.
+        The rule files shipped with hashcat are found in:
+
+            /usr/share/doc/hashcat/rules
+
+        Imagine an additional md5 hash leaked from the SQL database:
+
+            1b0556a75770563578569ae21392630c
+
+        We couldn't crack it with rockyou.txt alone, so we try some common rule-based transformations.
+        One such ruleset is best64.rule, which contains 64 standard password modifications.
+        To perform this we execute hashcat with `-r <ruleset>`, as follows:
+
+            $ hashcat -a 0 -m 0 1b0556a75770563578569ae21392630c /home/crab/seclists/Passwords/Leaked-Databases/rockyou.txt -r /usr/share/doc/hashcat/rules/best64.rule
+
+        And it was successful: `c0wb0ys1`
+
+    Mask Attack ( -a 3 )
+
+        A type of brute-force attack in which the keyspace is explicitly defined by the user.
+        For example, if we know a password is 8 characters long, rather than attempt every possible combination,
+            we define a mask that tests combinations of six letters followed by two numbers.
+        A mask is defined by a combining sequence of symbols, each representing a builtin or custom character set.
+        Hashcat includes several builtin character sets:
+
+            ?!      abcdefghijklmnopqrstuvwxyz
+            ?u      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+            ?d      0123456789
+            ?h      0123456789abcdef
+            ?H      0123456789ABCDEF
+            ?s      <space>!"#$%&'()*+,-./:;<=>?@[]^_`{
+            ?a      ?|?u?d?s
+            ?b      0x00 - 0xff
+
+        Custom charsets can be defined with the -1, -2, -3, and -4 arguments, then referred to with ?1, ?2, ?3, ?4.
+        Say we want to try passwords starting with an uppercase letter, continue with 4 lowercase letters, a digit, and then a symbol.
+        The resulting hashcat mask would be:
+            
+            ?u?l?l?l?l?d?s
+
+            $ hashcat -a 3 -m 0 1e293d6912d074c0fd15844d803400dd '?u?l?l?l?l?d?s'
+
+
+
+

@@ -5,7 +5,7 @@ set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -gx EDITOR nvim
 set -gx LANG en_US.UTF-8
-fish_config theme choose rosepinemoon
+# fish_config theme choose rosepinemoon
 # -- alias -- #
 alias cat="bat -p"
 alias ls="eza"

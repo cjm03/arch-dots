@@ -1,0 +1,103 @@
+John the Ripper is a well-known pentesting tool used for cracking passwords through various attacks including brute-force and dictionary.
+Open source, initially developed for UNIX, first released in 1996.
+
+Cracking Modes-------------------------------------------------------------------------------------------------------------------------------------------------
+
+    Single Crack Mode
+
+        Rule based cracking technique, most useful targeting Linux credentials.
+        It generates password candidates based on victim's username, home dir name, and GECOS values
+            GECOS: full name, room number, phone number, etc.
+        Candidates are run against a ruleset applying common string modifications seen in passwords.
+            I.e. Bob Smith may use Smith1 as his password.
+        Imagine finding the following `passwd` file:
+            
+        r0lf:$6$ues25dIanlctrWxg$nZHVz2z4kCy1760Ee28M1xtHdGoy0C2cYzZ8l2sVa1kIa8K9gAcdBP.GI6ng/qA4oaMrgElZ1Cb9OeXO4Fvy3/:0:0:Rolf Sebastian:/home/r0lf:/bin/bash
+
+        We infer the victim username `r0lf`, real name `Rolf Sebastian`, and home dir `/home/r0lf`.
+        Single crack will use this to generate candidate passwords and test them against the hash.
+        We can run the attack as follows:
+
+            $ john --single passwd
+            ''' --single = Single Crack Mode, passwd = file to be utilized '''
+
+    Wordlist Mode
+
+        Used to crack passwords with a dictionary attack, meaning attempting all passwords in the wordlist against the hash.
+        We can run a wordlist attack as follows:
+
+            $ john --wordlist=<wordlist_file> <hash_file>
+
+        Wordlist file MUST be in plaintext format, with one word per line.
+        Multiple wordlist files can be specified by separating them with a comma.
+        Rules (custom or builtin) can be specified using the `--rules` argument.
+            These can be applied to generate candidate passwords using transformations like appending numbers, capitalizing letters, or adding special characters
+
+    Incremental Mode
+
+        Powerful, brute-force style mode that generates candidate passwords based on a statistical model (Markov Chains).
+        Designed to test all character combinations defined by a specific character set, prioritizing more likely passwords based on training data.
+        This is the most exhaustive mode, but also most time-consuming.
+        Generates password guesses dynamically and doesn't rely on a wordlist.
+        Syntax:
+
+            $ john --incremental <hash_file>
+
+        By default, JtR uses predefined incremental modes specified in its config file (john.conf).
+        These define character sets and password lengths, and may be customized.
+
+Identifying Hash Formats---------------------------------------------------------------------------------------------------------------------------------------
+
+    Password hashes may appear in unknown formats and even JtR may not be able to identify them with complete certainty.
+    Consider the following hash:
+        193069ceb0461e1d40d216e32c79c704
+    One way is to consult JtR's sample hash documentation or another list (maybe PentesttMonkey).
+    Both of those list multiple example hashes as well as corresponding JtR format.
+    Another option, hashID, checks supplied hashes against a built-in list to suggest potential formats.
+        By adding the '-j' flag, hashID will, in addition to the hash format, list the corresponding JtR format:
+
+            $ hashid -j 193069ceb0461e1d40d216e32c79c704
+
+        The return is inconclusive, which will sometimes be the case.
+        Often, the context of where the hash came from will be enough to make an educated guess on its format.
+        This specific example used RIPEMD-128.
+
+    JtR supports hundreds of hash formats, and '--format' can be supplied to instruct JtR which format target hashes have.
+
+        $ john --format=raw-sha512 [...] <hash_file>
+
+Cracking Files-------------------------------------------------------------------------------------------------------------------------------------------------
+
+    Cracking password-protected/encrypted files with JtR is also possible.
+    Multiple "2john" tools come with JtR that can be used to process files and produce hashes compatible with JtR.
+    The generalized syntax for these tools is:
+
+        $ <tool> <file_to_crack> > file.hash
+
+    Some included tools with JtR:
+        pdf2john                Converts PDF docs 
+        ssh2john                Converts SSH private keys 
+        mscash2john             Converts MS Cash hashes
+        keychain2john           Converts OS X keychain files
+        rar2john                Converts RAR archives
+        pfx2john                Converts PKCS#12 files 
+        truecrypt_volume2john   Converts TrueCrypt volumes
+        keepass2john            Converts KeePass databases
+        vncpcap2john            Converts VNC PCAP files
+        putty2john              Converts PuTTY private keys
+        zip2john                Converts ZIP archives
+        hccap2john              Converts WPA/WPA2 handshake captures
+        office2john             Converts MS Office documents
+        wpa2john                Converts WPA/WPA2 handshakes
+
+        See a list of all *2john tools:
+
+            $ locate *2john*
+
+
+
+
+
+
+
+

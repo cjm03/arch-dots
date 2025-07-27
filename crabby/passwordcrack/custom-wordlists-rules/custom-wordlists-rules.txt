@@ -1,0 +1,93 @@
+Many users create passwords based on simplicity rather than security.
+To mitigate this human tendency, password policies can be implemented on systems to enforce specific password requirements.
+    I.e., require uppercase letters, special characters, and numbers.
+Most policies require the password length to be >= 8 and contain at least one character from each specified category.
+So far, we've been cracking simple passwords. It is not actually that easy.
+Unfortunately, the tendency for users to create weak passwords occurs even with password policies in place.
+    Individuals follow predictable patterns, often using words closely related to the service.
+    Many employees choose passwords including the company's name.
+    Personal preferences and interests also play a significant role:
+        may include references to pets, friends, sports, hobbies, and other aspects of daily life.
+Basic OSINT techniques can be highly effective in uncovering such personal information.
+
+    Users commonly user the following additions to fit the most common password policies:
+
+        First letter uppercase                  Password
+        Adding Numbers                          Password123
+        Adding year                             Password2022
+        Adding month                            Password02
+        Last character is an !                  Password2022!
+        Adding special characters               P@ssw0rd2022!
+
+    With this in mind, we can create rules to generate likely weak passwords.
+    According to statistics, most passwords are no longer than ***10*** characters.
+    One approach is to select familiar terms that are at least five characters long:
+
+        Pet names   Hobbies     Personal preferences        Other common interests
+
+        I.e. if a user selects a single word (current month), appends the current year, and adds a special character at the end,
+            the result may satisfy a typical ten-character password requirement.
+        Considering that most organizations require regular password changes, a user might only change the month or increment a single digit.
+
+    Simple example using a password list with only one entry:
+
+        $ cat password.list
+        password
+
+    We can use hashcat to combine lists of potential names and labels with specific mutation rules to create custom wordlists.
+    Hashcat uses a specific syntax to define characters, words, and their transformations.
+    The complete syntax is in the official hashcat rule-based attack documentation, but the following convey how hashcat mutates input words:
+
+        :       Do nothing
+        l       Lowercase all letters
+        u       Uppercase all letters
+        c       Capitalize the first letter and lowercase others
+        sXY     Replace all instances of X with Y
+        $!      Add the exclamation character at the end
+
+    Each rule is written on a newline and determines how a given word should be transformed.
+    Writing the above functions in a file `custom.rule`, we get:
+
+        :
+        c
+        so0
+        c so0
+        sa@
+        c sa@
+        c sa@ so0
+        $!
+        $! c
+        $! so0
+        $! sa@
+        $! c so0
+        $! c sa@
+        $! so0 sa@
+        $! c so0 sa@
+
+    To apply custom.rule's rules to each word in password.list and store results in mut_password.list:
+
+        $ hashcat --force password.list -r custom.rule --stdout | sort -u > mut_password.list
+
+    In this case, the single input word produces fifteen mutated variants.
+
+    Hashcat and JtR both come with pre-built rule lists that can be used for password generation and cracking.
+    One of the most effective is best64.rule, which applies common transformations that frequently result in successful password guesses.
+
+Generating Wordlists Using CeWL
+
+    CeWL can be used to scan potential words from a company's website and save them in a separate list.
+    This list + desired rules = custom password list with a higher probability of containing the correct password for an employee.
+    We specify some parameters:
+
+        -d              depth to spider
+        -m              minimum length of the word
+        --lowercase     storage of the found words in lowercase
+        -w              file to store the results in
+
+        $ cewl https://www.inlanefreight.com -d 4 -m 6 --lowercase -w inlane.wordlist
+        $ wc -l inlane.wordlist
+
+
+
+
+

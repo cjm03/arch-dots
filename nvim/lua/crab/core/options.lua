@@ -12,8 +12,8 @@ vim.opt.cursorline = true
 vim.opt.scrolloff = 20
 vim.opt.wrap = false
 
--- vim.opt.ignorecase = true
--- vim.opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 vim.opt.showmode = false
 vim.opt.cmdheight = 0
 vim.opt.background = "dark"

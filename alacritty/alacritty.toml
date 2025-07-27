@@ -1,6 +1,6 @@
 [general]
 import = [
-    "~/.config/alacritty/citruszest.toml",
+    "~/.config/alacritty/burzum.toml",
 ]
 
 [env]
@@ -12,8 +12,8 @@ transparent_background_colors = false
 draw_bold_text_with_bright_colors = true
 
 [window]
-padding.x = 8
-padding.y = 8
+padding.x = 4
+padding.y = 4
 opacity = 1.0
 blur = false
 # opacity = 0.75
@@ -24,8 +24,12 @@ dynamic_padding = false
 hide_when_typing = true
 
 [font]
-size = 16
-normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
+size = 12
+# normal = { family = "Px437 OlivettiThin 9x14", style = "Regular" }
+# normal = { family = "Px437 LE Model D CGA", style = "Regular" }
+# normal = { family = "Px437 Nix8810 M16", style = "Regular" }
+# normal = { family = "Px437 IBM VGA 8x16", style = "Regular" }
+normal = { family = "JetBrainsMono Nerd Font Mono", style = "SemiBold" }
 
 [cursor]
 style = { shape = "Block" }
