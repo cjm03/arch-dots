@@ -1,17 +1,16 @@
 
 [colors.primary]
-# background = '#000000'
-background = '#232323'
+background = '#000000'
 foreground = '#c1c1c1'
 dim_foreground = '#a5abb6'
 
 [colors.cursor]
-text = '#323232'
-cursor = '#afffff'
+text = '#000000'
+cursor = '#c1c1c1'
 
 [colors.vi_mode_cursor]
-text = '#323232'
-cursor = '#afffff'
+text = '#000000'
+cursor = '#c1c1c1'
 
 [colors.normal]
 black = '#231c14'

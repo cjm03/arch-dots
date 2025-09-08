@@ -3,19 +3,13 @@
 # Default colors
 [colors.primary]
 background = '#0a0c10'
-# foreground = '#f0f3f6'
-# background = '#232323'
-foreground = '#c1c1c1'
+foreground = '#f0f3f6'
 
 # Cursor colors 
 [colors.cursor]
-text = '#323232'
+text = '#0a0c10'
 cursor = '#afffff'
-# text = '#0a0c10'
 # cursor = '#f0f3f6'
-[colors.vi_mode_cursor]
-text = '#323232'
-cursor = '#afffff'
 
 # Normal colors
 [colors.normal]
@@ -38,6 +32,3 @@ blue = '#91cbff'
 magenta = '#cb9eff'
 cyan = '#39c5cf'
 white = '#d9dee3'
-
-# [colors.selection]
-# text = '#c1c1c1'

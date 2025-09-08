@@ -49,31 +49,27 @@ return {
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
-        -- lspconfig.lua_ls.setup({
-        --     capabilities = capabilities,
-        --     settings = {
-        --         Lua = {
-        --             diagnostics = {
-        --                 globals = { "vim" },
-        --             },
-        --             completion = {
-        --                 callSnippet = "Replace",
-        --             },
-        --             workspace = {
-        --                 library = {
-        --                     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-        --                     [vim.fn.stdpath("config") .. "/lua"] = true,
-        --                 },
-        --             },
-        --         },
-        --     },
-        -- })
+        lspconfig.lua_ls.setup({
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    completion = {
+                        callSnippet = "Replace",
+                    },
+                    workspace = {
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.stdpath("config") .. "/lua"] = true,
+                        },
+                    },
+                },
+            },
+        })
 
-        -- lspconfig.pylsp.setup({
-        --     capabilities = capabilities,
-        -- })
-
-        lspconfig.pyright.setup({
+        lspconfig.pylsp.setup({
             capabilities = capabilities,
         })
 
@@ -82,9 +78,9 @@ return {
             filetypes = { "html", "php", "css", "javascript", "typescript", "jsx", "tsx" },
         })
 
-        lspconfig.asm_lsp.setup({
-            capabilities = capabilities,
-        })
+        -- lspconfig.asm_lsp.setup({
+        --     capabilities = capabilities,
+        -- })
 
         lspconfig.ast_grep.setup({
             capabilities = capabilities,

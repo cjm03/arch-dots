@@ -29,7 +29,6 @@ require("lazy").setup(
         },
     }
 )
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "#323232" })
 -- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ddeecc", bg = "#0a0c10" })
 
 -- vim.api.nvim_create_user_command("OpenPdf", function()

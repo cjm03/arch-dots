@@ -5,7 +5,7 @@ return {
         require("lualine").setup({
             options = {
                 theme = "auto",
-                -- theme = "lackluster",
+                -- theme = 'black-metal',
                 global_status = false,
                 section_separators = '',
                 component_separators = '',

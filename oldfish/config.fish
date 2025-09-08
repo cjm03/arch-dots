@@ -1,13 +1,6 @@
 if status is-interactive
 end
 set fish_greeting
-set -Ux CUDA_PATH /opt/cuda
-set -Ux NVCC_CCBIN /usr/bin/g++-14
-set -Ux LD_LIBRARY_PATH /opt/gtk/lib
-fish_add_path /opt/cuda/bin
-fish_add_path /opt/cuda/nsight_compute
-fish_add_path /opt/cuda/nsight_systems/bin
-fish_add_path /opt/gtk/bin
 set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -gx EDITOR nvim
@@ -20,7 +13,5 @@ alias la="eza --long --header --icons --all"
 alias tree="eza --tree"
 alias fd="fd -HI"
 alias cd="z"
-alias template="~/crabby/ctemplate/template"
-# alias john="/home/crab/Github/john/run/john"
 
 zoxide init fish | source

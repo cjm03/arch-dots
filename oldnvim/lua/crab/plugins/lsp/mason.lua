@@ -27,7 +27,8 @@ return {
             automatic_enable = false,
             ensure_installed = {
                 "clangd",
-                "pyright",
+                "lua_ls",
+                "pylsp",
                 "intelephense",
                 "bashls",
                 "asm_lsp",
