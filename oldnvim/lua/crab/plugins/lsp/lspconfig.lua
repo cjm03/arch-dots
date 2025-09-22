@@ -45,56 +45,38 @@ return {
             update_in_insert = false,  -- Keep diagnostics active in insert mode
         })
 
-        local lspconfig = require("lspconfig")
+        -- local lspconfig = require("lspconfig")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
-        lspconfig.lua_ls.setup({
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    completion = {
-                        callSnippet = "Replace",
-                    },
-                    workspace = {
-                        library = {
-                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            [vim.fn.stdpath("config") .. "/lua"] = true,
-                        },
-                    },
-                },
-            },
-        })
-
-        lspconfig.pylsp.setup({
+        -- lspconfig.pyright.setup({
+        vim.lsp.config('pyright', {
             capabilities = capabilities,
         })
 
-        lspconfig.html.setup({
+        vim.lsp.config('html', {
             capabilities = capabilities,
             filetypes = { "html", "php", "css", "javascript", "typescript", "jsx", "tsx" },
         })
 
-        -- lspconfig.asm_lsp.setup({
-        --     capabilities = capabilities,
+        vim.lsp.config('asm_lsp', {
+            capabilities = capabilities,
+        })
+
+        vim.lsp.config('ast_grep', {
+            capabilities = capabilities,
+        })
+
+        vim.lsp.config('bashls', {
+            capabilities = capabilities,
+        })
+
+        -- lspconfig.intelephense.setup({
+            -- capabilities = capabilities,
         -- })
 
-        lspconfig.ast_grep.setup({
-            capabilities = capabilities,
-        })
-
-        lspconfig.bashls.setup({
-            capabilities = capabilities,
-        })
-
-        lspconfig.intelephense.setup({
-            capabilities = capabilities,
-        })
-
-        require("lspconfig")["tinymist"].setup({
+        -- require("lspconfig")["tinymist"].setup({
+        vim.lsp.config('tinymist', {
             capabilities = capabilities,
             settings = {
                 formatterMode = "typstyle",
@@ -120,7 +102,8 @@ return {
             end,
         })
 
-        require("lspconfig").clangd.setup({
+        -- require("lspconfig").clangd.setup({
+        vim.lsp.config('clangd', {
             cmd = {
                 "clangd",
                 "--compile-commands-dir=build",
@@ -141,4 +124,10 @@ return {
             capabilities = capabilities,
         })
     end,
+    -- vim.lsp.enable('clangd')
+    -- vim.lsp.enable('pyright')
+    -- vim.lsp.enable('bashls')
+    -- vim.lsp.enable('html')
+    -- vim.lsp.enable('asm_lsp')
+    -- vim.lsp.enable('ast_grep')
 }

@@ -200,6 +200,7 @@ return {
                 end,
             },
             sources = cmp.config.sources({
+                -- { name = "copilot" },
                 { name = "luasnip" },
                 { name = "lazydev" },
                 { name = "nvim_lsp" },
@@ -222,7 +223,7 @@ return {
                     vim_item.menu = ({
                         buffer = "[Buffer]",
                         nvim_lsp = "[LSP]",
-                        luasnip = "[LuaSnip]",
+                        -- luasnip = "[LuaSnip]",
                         nvim_lua = "[Lua]",
                         latex_symbols = "[LaTeX]",
                     })[entry.source.name]
