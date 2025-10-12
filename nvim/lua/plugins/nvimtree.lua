@@ -1,0 +1,14 @@
+return {
+    "nvim-tree/nvim-tree.lua",
+    enabled = true,
+    version = "*",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons", },
+    config = function()
+        require("nvim-tree").setup({
+            view = { width = 24, },
+            filters = { dotfiles = true, },
+        })
+        vim.keymap.set('n', '<leader>ex', ':NvimTreeToggle<CR>')
+    end
+}
