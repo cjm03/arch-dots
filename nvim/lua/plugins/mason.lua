@@ -6,7 +6,6 @@ return {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "neovim/nvim-lspconfig",
-        -- "saghen/blink.cmp",
     },
     config = function()
         local mason = require("mason")
@@ -28,22 +27,23 @@ return {
             ensure_installed = {
                 "clangd",
                 "pyright",
-                "bashls",
-                "asm_lsp",
-                "ast_grep",
-                "ts_ls",
-                "html"
+                -- "bashls",
+                -- "asm_lsp",
+                -- "ast_grep",
+                "html",
+                "lua_ls"
             },
         })
+
         mason_tool_installer.setup({
             ensure_installed = {
-                "prettier",
-                "stylua",
-                "isort",
+                -- "prettier",
+                -- "stylua",
+                -- "isort",
                 "pylint",
                 "clangd",
-                "denols",
+                -- "denols"
             },
         })
-    end,
+    end
 }

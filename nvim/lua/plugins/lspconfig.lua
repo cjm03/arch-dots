@@ -1,26 +1,21 @@
 return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
-        -- { "antosha417/nvim-lsp-file-operations", config = true },
-    },
+    dependencies = { "hrsh7th/cmp-nvim-lsp" },
     config = function()
         vim.api.nvim_create_autocmd("LspAttach", {
-            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+            group = vim.api.nvim_create_augroup("MyLspGroup", {}),
             callback = function(ev)
                 local opts = { buffer = ev.buf, silent = true }
-                opts.desc = "docs for under cursor"
+                opts.desc = "Docs for Under Cursor"
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                opts.desc = "definition"
+                opts.desc = "Definition"
                 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-                opts.desc = "references"
-                vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
-                opts.desc = "codeaction"
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-                opts.desc = "open diagnostic float"
+                opts.desc = "Open Diagnostic Float"
                 vim.keymap.set("n", "<leader>go", vim.diagnostic.open_float, opts)
-            end,
+                opts.desc = "Code Actions"
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+            end
         })
 
         local signs = {
@@ -30,76 +25,59 @@ return {
             [vim.diagnostic.severity.INFO]  = "",
         }
 
-        -- Set the diagnostic config with all icons
         vim.diagnostic.config({
-            signs = {
-                text = signs -- Enable signs in the gutter
-            },
-            virtual_text = true,  -- Specify Enable virtual text for diagnostics
-            underline = true,     -- Specify Underline diagnostics
-            update_in_insert = false,  -- Keep diagnostics active in insert mode
+            signs = { text = signs },
+            virtual_text = true,
+            underline = true,
+            update_in_insert = false,
         })
 
+        -- vim.lsp.set_log_level("debug")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local capabilities = cmp_nvim_lsp.default_capabilities()
         local lsps = {
-            { 
-                'pyright', { capabilities = capabilities }
+            {
+                "pyright", { capabilities = capabilities }
             },
 
-            { 
-                'html',
+            {
+                "html",
                 {
                     filetypes = { "html", "php", "css", "javascript", "typescript", "jsx", "tsx" },
                     capabilities = capabilities,
                 }
             },
 
-            {
-                'asm_lsp', { capabilities = capabilities }
-            },
+            -- {
+            --     "asm_lsp", { capabilities = capabilities }
+            -- },
 
             {
-                'lua_ls', 
+                "lua_ls",
                 {
-                    cmd = { 'lua-language-server' },
-                    filetypes = { 'lua' },
-                    root_markers = {'.luarc.json', '.luarc.jsonc', '.stylua.toml'},
+                    cmd = { "lua-language-server" },
+                    filetypes = { "lua" },
+                    root_markers = { ".luarc.json", ".luarc.jsonc", ".stylua.toml" },
                     capabilities = capabilities,
                 }
             },
-            {
-                'ts_ls', { capabilities = capabilities }
-            },
-            {
-                'ast_grep', { capabilities = capabilities }
-            },
 
-            { 
-                'bashls', { capabilities = capabilities }
-            },
+            -- {
+            --     "ast_grep", { capabilities = capabilities }
+            -- },
+            --
+            -- {
+            --     "bashls", { capabilities = capabilities }
+            -- },
+
             {
-                'clangd',
+                "clangd",
                 {
-                    cmd = {
-                        "clangd",
-                        "--compile-commands-dir=build",
-                        "--background-index",
-                        "--clang-tidy",
-                        "--log=verbose",
-                        "--header-insertion=iwyu",
-                        "--completion-style=detailed",
-                        "--function-arg-placeholders",
-                        "--fallback-style=llvm"
-                    },
-                    init_options = {
-                        -- fallbackFlags = { '-std=c99' },
-                        usePlaceholders = true,
-                        completeUnimported = true,
-                        clangdFileStatus = true,
-                    },
+                    cmd = { "clangd", "--background-index" }, -- "--function-arg-placeholders=0", "--clang-tidy" }, -- "--header-insertion=iwyu", "--completion-style=detailed", "--fallback-style=llvm", "--fallback-style=llvm" },
+                    init_options = { usePlaceholders = true, completeUnimported = true, clangdFileStatus = true },
                     filetypes = { "c", "h", "cpp" },
                     capabilities = capabilities,
+
                 }
             },
         }
@@ -111,6 +89,5 @@ return {
                 vim.lsp.config(name, conf)
             end
         end
-
     end,
 }

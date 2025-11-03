@@ -128,5 +128,5 @@ return {
         vim.api.nvim_create_autocmd({ 'InsertEnter', 'CursorMovedI' }, {
             callback = toggle_ghost_text,
         })
-    end,
+    end
 }
