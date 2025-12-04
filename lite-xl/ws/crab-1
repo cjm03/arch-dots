@@ -1,0 +1,44 @@
+return { path = "/home/crab", documents = {["type"]="leaf",["views"]={[1]={["selection"]={[1]=1,[2]=1,[3]=44,[4]=15},["type"]="doc",["active"]=false,["text"]="sh -c \"$(\
+  cat <<'EOF'\
+# sysInfo.sh content begins here\
+\
+weather=\"\"\
+old_packagesCount=\"\"\
+old_volume_value=\"\"\
+old_border_colour=\"\"\
+old_border_colour2=\"\"\
+temp_file=$(mktemp)\
+trap 'rm -f \"$temp_file\"' EXIT\
+\
+while true; do\
+  packagesCount=$(yay -Q | wc -l)\
+  volume_value=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\\d+%' | head -n 1)\
+\
+  border_colour=$(kitty @ get-colors | grep color0 | sed 's/.*#/#/')\
+  border_colour2=$(kitty @ get-colors | grep color2 | sed 's/.*#/#/')\
+\
+  if [[ \"$packagesCount\" != \"$old_packagesCount\" ]] ||\
+     [[ \"$volume_value\" != \"$old_volume_value\" ]] ||\
+     [[ \"$border_colour\" != \"$old_border_colour\" ]] ||\
+     [[ \"$border_colour2\" != \"$old_border_colour2\" ]]; then\
+\
+    old_packagesCount=\"$packagesCount\"\
+    old_volume_value=\"$volume_value\"\
+    old_border_colour=\"$border_colour\"\
+    old_border_colour2=\"$border_colour2\"\
+\
+    packages=$(gum style --border=rounded --border-foreground=\"$border_colour2\" --padding=\"0 1\" \"Packages: $packagesCount\")\
+    volume=$(gum style --border=rounded --border-foreground=\"$border_colour2\" --padding=\"0 1\" \"Volume: $volume_value\")\
+    cal=$(cal --color=always | sed -n '1,7p' | gum style --border=rounded --padding=\"0 2\" --border-foreground=\"$border_colour\" --margin=\"0 0\")\
+\
+    sysInfo=$(gum join --vertical --align=\"right\" \"$packages\" \"$volume\")\
+\
+    echo -e \"\\u001Bc\"\
+    gum join \"$sysInfo\" \"$cal\" \
+    kitten @ scroll-window 1-\
+  fi\
+\
+  sleep 5s\
+done\
+EOF\
+)\" >>/dev/null",["scroll"]={["y"]=0,["x"]=0}}},["active_view"]=1}, directories = {} }
