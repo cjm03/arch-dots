@@ -4,7 +4,7 @@ return {
     config = function()
         require("oil").setup({
             default_file_explorer = true,
-            columns = { },
+            columns = { "icon", "permissions", "size", "mtime" },
             keymaps = {
                 ["<C-h>"] = false,
                 ["<C-c>"] = false,
@@ -17,7 +17,6 @@ return {
         })
         vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "oil nonfloat currentdir"})
         vim.keymap.set("n", "<leader>-", "<CMD>Oil /home/crab/<CR>", { desc = "oil nonfloat homedir"})
-        -- vim.keymap.set("n", "<leader>-", require("oil").toggle_float, { desc = "oil float"})
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "oil",
             callback = function()

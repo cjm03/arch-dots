@@ -5,7 +5,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("nvim-tree").setup({
-            view = { width = 24 },
+            view = { width = 12 },
             filters = { dotfiles = true },
         })
         vim.keymap.set('n', '<leader>ex', ':NvimTreeToggle<CR>')

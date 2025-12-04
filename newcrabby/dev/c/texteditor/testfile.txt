@@ -1,0 +1,10 @@
+jjwhat the fuck are you even talkingggggggggg about
+asdfasdfhjkl
+what does the fox say
+asdfasdfasdfasdf
+okay boy
+int main(void) {
+	printf("Hello, World!\n");
+	return 0;
+}
+

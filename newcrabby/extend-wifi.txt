@@ -1,0 +1,14 @@
+Arch compiles eth0 -> enp4s0 and wlan0 -> wlp5s0
+check link status = 
+    $ iw dev wlp5s0 link
+
+get static info such as tx/rx bytes = 
+    $ iw dev wlp5s0 station dump
+
+get name of wireless interface = 
+    $ iw dev
+    // wlp5s0
+
+get interface status = 
+    $ iw dev wlp5s0
+    $ iw dev wlp5s0 link

@@ -7,6 +7,8 @@ set -Ux XDG_CONFIG_HOME $HOME/.config
 set -gx EDITOR nvim
 set -gx LANG en_US.UTF-8
 
+fish_add_path /home/crab/.local/bin
+
 # -- alias -- #
 alias ls="eza"
 alias la="eza --long --header --icons --all"

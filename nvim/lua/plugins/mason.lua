@@ -28,8 +28,8 @@ return {
                 "clangd",
                 "pyright",
                 -- "bashls",
-                -- "asm_lsp",
-                -- "ast_grep",
+                "asm_lsp",
+                "rust_analyzer",
                 "html",
                 "lua_ls"
             },

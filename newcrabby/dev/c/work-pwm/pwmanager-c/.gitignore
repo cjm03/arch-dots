@@ -1,0 +1,15 @@
+manager
+test
+pwm
+.clangd
+store.txt
+*.txt
+*.enc
+bak-storage.c
+store.txt
+store.txt.enc
+new.txt
+new.txt.enc
+vgcore*
+vgcore.*
+viz.c

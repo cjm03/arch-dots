@@ -1,0 +1,28 @@
+# Makefile
+
+flags := -fno-stack-protector -O0 -Wall -std=gnu23 -m16
+flags += -ffreestanding -I include -nostdlib
+ldflags := --nmagic --script=gui.ld
+objects := main.o shapes.o
+xobjects := xgfx.o
+NASMENV := -i include/asm/
+export NASMENV
+
+.PHONY: clean
+
+all: gui.com
+
+gui.com: $(objects) $(xobjects)
+		ld $(ldflags) $^ -o $@
+
+main.o: main.c
+	gcc $(flags) -c $^
+
+shapes.o: shapes.c
+	gcc $(flags) -c $^
+
+xgfx.o: xgfx.asm
+	nasm -f elf $^ -o $@
+
+clean:
+	rm -f *.o *.com

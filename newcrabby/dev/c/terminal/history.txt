@@ -1,0 +1,32 @@
+la
+ls
+eza
+eza --long
+man
+man man
+nvim
+vim history.txt
+ls
+pwd
+vim
+vi
+sudo pacman -Syu
+sudo pacman -S vi
+vi history.txt
+la
+ls
+q
+la
+ls
+la
+cat history.txt
+ls
+cat terminal.c
+vi history.txt
+la
+eza --long --headers --icons --all
+eza --long --icons --all
+btop
+nvim flow
+rm flow
+ls

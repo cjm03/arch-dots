@@ -48,9 +48,15 @@ return {
                 }
             },
 
-            -- {
-            --     "asm_lsp", { capabilities = capabilities }
-            -- },
+            {
+                "asm_lsp",
+                {
+                    cmd = { "asm-lsp" },
+                    filetypes = { "asm", "s", "S" },
+                    root_markers = { ".asm-lsp.toml", ".git" },
+                    capabilities = capabilities,
+                }
+            },
 
             {
                 "lua_ls",
@@ -66,9 +72,26 @@ return {
             --     "ast_grep", { capabilities = capabilities }
             -- },
             --
-            -- {
-            --     "bashls", { capabilities = capabilities }
-            -- },
+            {
+                "rust_analyzer",
+                {
+                    cmd = { "rust-analyzer"},
+                    filetypes = { "rust", "rs" },
+                    settings = {
+                        ["rust-analyzer"] = {
+                            imports = {
+                                granularity = { group = "module" },
+                                prefix = "self",
+                            },
+                            cargo = {
+                                buildScripts = { enable = true },
+                            },
+                            procMacro = { enable = true },
+                        }
+                    },
+                    capabilities = capabilities
+                }
+            },
 
             {
                 "clangd",

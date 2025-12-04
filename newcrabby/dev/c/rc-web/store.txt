@@ -1,0 +1,6 @@
+admin->$argon2i$v=19$m=65536,t=2,p=1$npGkIrOM74B4X6qu0GzQ/g$9ro6vG4CLLQhPTe73fgUASD39T2eFN0ey/KT09gqPxI
+alpha->$argon2i$v=19$m=65536,t=2,p=1$gvz6own03LuN8E8skZfN7w$V483pFx7TJKFh9xF99/CFjmVj1x8VDcAC91XgTpL+gw
+crab->$argon2i$v=19$m=65536,t=2,p=1$K/J1vZ+JP8aJsPp5ZLr6fA$vbpYPvB1ZI9KACQ4+/3KhXE1yudQk5PaHyxUXnK5Tjk
+felix23->$argon2i$v=19$m=65536,t=2,p=1$v4lHRzwxXb0NRgphS8tp1Q$SC3FMKHacF9f+hbA/E+RNf759VdzyA6+fqctuwZcoRM
+12345->$argon2i$v=19$m=65536,t=2,p=1$qoFLqNTjeWCp1HU/ujzwBQ$6/gxBkOG+L8kzfwNB5IZOuTxnZsCUpSvF0Y7juGKTII
+password->$argon2i$v=19$m=65536,t=2,p=1$8pN98pRbczn/ufXII1aC1A$XaxyyBp2p+wkMKky7K3yGcQip+t3k7yGeYyccD0YiSE

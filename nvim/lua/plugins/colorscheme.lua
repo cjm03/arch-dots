@@ -1,3 +1,21 @@
+-- return {
+--     "metalelf0/black-metal-theme-neovim",
+--     lazy = false,
+--     priority = 1000,
+--     config = function()
+--         require("black-metal").setup({
+--             theme = "immortal",
+--             variant = "dark",
+--             transparent = true,
+--             code_style = {
+--                 comments = "none",
+--                 headings = "none"
+--             },
+--         })
+--         require("black-metal").load()
+--     end
+-- }
+
 return {
     "projekt0n/github-nvim-theme",
     name = "github-theme",
@@ -16,22 +34,6 @@ return {
         })
         vim.cmd("colorscheme github_dark_colorblind")
 
-        local custom_auto = require'lualine.themes.auto'
-        custom_auto.normal.a.gui = 'bold'
-        custom_auto.insert.a.bg = '#ea8c2e'
-        custom_auto.insert.b.fg = '#ea8c2e'
-        custom_auto.insert.a.gui = 'bold'
-        custom_auto.visual.a.gui = 'bold'
-        custom_auto.command.a.gui = 'bold'
-
-        require("lualine").setup({
-            options = {
-                theme = custom_auto,
-                global_status = false,
-                section_separators = "",
-                component_separators = "",
-            },
-        })
     end
 }
 
@@ -60,22 +62,3 @@ return {
 --         vim.cmd('colorscheme oldworld')
 --     end
 -- }
-
--- return {
---     "projekt0n/caret.nvim",
---     lazy = false,
---     priority = 1000,
---     config = function()
---         require("caret").setup({
---             options = {
---                 transparent = true,
---                 styles = {
---                     italics = false,
---                     bold = true
---                 },
---             },
---         })
---         vim.cmd('colorscheme caret')  -- jellybeans-muted, jellybeans-mono
---     end
--- }
-

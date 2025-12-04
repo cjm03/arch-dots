@@ -1,0 +1,1 @@
+/home/crab/.local/share/broot/launcher/fish/br.fish

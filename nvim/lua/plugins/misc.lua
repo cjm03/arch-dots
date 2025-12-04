@@ -16,5 +16,12 @@ return {
         config = function()
             require("nvim-web-devicons").setup()
         end
+    -- },
+    -- {
+    --     "nvim-mini/mini.tabline",
+    --     version = "*",
+    --     config = function()
+    --         require('mini.tabline').setup()
+    --     end
     }
 }

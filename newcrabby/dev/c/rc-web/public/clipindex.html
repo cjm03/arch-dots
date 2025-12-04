@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RUST CLIPS</title>
+        <link rel="stylesheet" href="/public/css/bootstrap.css">
+        <link rel="icon" type="image/png" href="public/favicon.png">
+        <style>
+            body {
+                font-family: sans-serif;
+                background: #121212;
+                color: #fff;
+                /* padding: 1em; */
+            }
+            h1 {
+                text-align: center;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 1em;
+            }
+            .clip {
+                background: #1e1e1e;
+                padding: 1em;
+                gap: 1em;
+            }
+            video {
+                width: 100%;
+                height: auto;
+                border-radius: 4px;
+            }
+            .clip p {
+                margin: 0.5em 0 0;
+                font-size: 0.9em;
+                color: #aaa;
+            }
+            .clip-thumbnail {
+                max-width: 100%;
+                border-radius: 4px;
+                margin-bottom: 8px;
+            }
+            button {
+                margin-top: 0.5em;
+                padding: 0.4em 1em;
+                background-color: #333;
+                color: #eee;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #444;
+            }
+        </style>
+    </head>
+    <body>
+        <header style="background-color: #121212;">
+            <nav class="navbar navbar-expand border-bottom border-primary" data-bs-theme="dark" style="padding-top: 0px; padding-bottom: 0px;">
+                <div class="container-fluid lh-0 py-3 mb-0">
+                    <a class="navbar-brand" href="/">stealthywombat.tech</a>
+                    <ul class="navbar-nav mb-0">
+                        <li class="nav-item">
+                            <form class="container-fluid">
+                                <button class="btn btn-sm btn-outline-primary" type="button">
+                                    <a class="nav-link" href="/clipindex.html">clips</a>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary" type="button">
+                                    <a class="nav-link" href="/public/alccalc.html">kro-alc</a>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary" type="button">
+                                    <a class="nav-link" href="/public/login.html">Login</a>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                    <!-- <form class="d-flex" role="search"> -->
+                    <!--     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/> -->
+                    <!--     <button class="btn btn-outline-primary" disabled>Search</button> -->
+                    <!-- </form> -->
+                </div>
+            </nav>
+        </header>
+
+        <main class="container-fluid">
+            <div class="grid" id="clipGrid" style="padding-top: 12px;"></div>
+
+            <script>
+                async function loadClips() {
+                    const res = await fetch('/api/clips');
+                    const clips = await res.json();
+                
+                    const grid = document.getElementById('clipGrid');
+                    grid.innerHTML = "";
+
+                    for (const clip of clips) {
+                        const div = document.createElement('div');
+                        div.className = 'clip';
+                        div.innerHTML = `
+                            <a href="/media?id=${encodeURIComponent(clip.id)}" class="clip-link">
+                                <img src="/private/thumbnails/${clip.id}.jpg" alt="${clip.id} thumbnail" class="clip-thumbnail">
+                                <p><strong>${clip.id}</strong><br>${(clip.size / 1048576).toFixed(2)} MB</p>
+                            </a>
+                            <!-- <p><strong>${clip.id}</strong><br>${(clip.size / 1048576).toFixed(2)} MB</p> -->
+                            <!-- <button onclick="window.location.href='/clip?id=${encodeURIComponent(clip.id)}'">View</button> -->
+                            <!-- <button><a href="/media?id=${encodeURIComponent(clip.id)}"> -->
+                            <!--     <img src="/private/thumbnails/${clip.id}.jpg" alt="${clip.id} thumbnail"> -->
+                            <!-- </a></button> -->
+                            <!-- <button onclick="window.location.href='/media?id=${encodeURIComponent(clip.id)}'">View</button> -->
+                        `;
+                        grid.appendChild(div);
+                    }
+                }
+                loadClips();
+            </script>
+        </main>
+    </body>
+</html>
