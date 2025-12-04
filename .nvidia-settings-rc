@@ -2,7 +2,7 @@
 # /home/crab/.nvidia-settings-rc
 #
 # Configuration file for nvidia-settings - the NVIDIA Settings utility
-# Generated on Sun Oct 12 03:04:00 2025
+# Generated on Mon Oct 27 11:02:17 2025
 #
 
 # ConfigProperties:
@@ -26,14 +26,13 @@ Timer = PowerMizer_Monitor_(GPU_0),Yes,1000
 0/AllowFlipping=1
 0/FSAAAppControlled=1
 0/LogAnisoAppControlled=1
-0/OpenGLImageSettings=1
+0/OpenGLImageSettings=2
 0/FSAAAppEnhanced=0
 0/AllowGSYNC=1
 0/AllowVRR=1
 0/ShowGSYNCVisualIndicator=0
 0/ShowVRRVisualIndicator=0
 0/ShowGraphicsVisualIndicator=0
-0/XVideoSyncToDisplayID=DP-2
 [DPY:HDMI-0]/Dithering=0
 [DPY:HDMI-0]/DitheringMode=0
 [DPY:HDMI-0]/DitheringDepth=0

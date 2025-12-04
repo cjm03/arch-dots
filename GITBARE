@@ -1,0 +1,9 @@
+1. TWO WINDOWS, ONE LOCAL TERMINAL and ONE REMOTE TERMINAL
+2. REMOTE WINDOW: git init --bare hello
+3. LOCAL WINDOW: scp <user>@<host>:hello/HEAD
+    a. ALLOWS YOU TO GET A SPECIFIC FILE OVER SCP
+4. LOCAL WINDOW: git clone <user>@<host>:hello
+    a. CLONES THE WHOLE REPO
+5. LOCAL WINDOW: NOW YOU CAN ADD FILES, git add, git commit, git push origin main
+
+git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols
