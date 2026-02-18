@@ -5,9 +5,13 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
         require("nvim-tree").setup({
-            view = { width = 12 },
+            view = { width = 24 },
             filters = { dotfiles = true },
+            renderer = {
+                indent_markers = { enable = true, },
+            },
         })
         vim.keymap.set('n', '<leader>ex', ':NvimTreeToggle<CR>')
+        vim.keymap.set('n', '<leader>ee', ':NvimTreeFocus<CR>')
     end
 }

@@ -1,20 +1,29 @@
 set $mod Mod4
 
-font pango:UbuntuMono Nerd Font 10
 # font pango:EnvyCodeR Nerd Font Mono 10
-
+font pango:UbuntuMono Nerd Font 10
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id dunst -config /home/crab/.config/dunst/dunstrc
 
-# exec_always --no-startup-id feh --bg-fill ~/.config/wallpaper/arsenic.jpg
+# xset
 exec_always --no-startup-id xset s off
 exec_always --no-startup-id xset -dpms
 exec_always --no-startup-id xset r rate 175 100
 
+# Dunst
+exec --no-startup-id dunst -config /home/crab/.config/dunst/dunstrc
+
+# Feh
+# exec_always --no-startup-id feh --bg-scale ~/.config/wallpaper/systemd.png ~/.config/wallpaper/jigsaw2.png ~/.config/wallpaper/fakeroot.png
+# exec_always --no-startup-id feh --bg-fill ~/.config/wallpaper/glitch.jpg
+exec_always --no-startup-id feh --bg-fill ~/.config/wallpaper/crown.png
+
+# Picom
+# exec --no-startup-id picom --config ~/.config/picom/picom.conf
+
 # kitti3
-exec_always --no-startup-id kitti3
+exec_always --no-startup-id kitti3 -n caterwaul -p CC -s 0.5 0.3 
 
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -30,11 +39,12 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec "kitty --title ~TERMINAL"
+bindsym $mod+Return exec "kitty"
+# bindsym $mod+Return exec "kitty --title ~TERMINAL"
 bindsym $mod+Shift+Return exec "kitty -1 --hold"
 
 # kitti3
-bindsym $mod+Tab nop kitti3
+bindsym $mod+Tab nop caterwaul
 
 # kill focused window
 bindsym $mod+c kill
@@ -140,6 +150,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
+for_window [title="eduterm"] floating enable
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -167,12 +179,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# default_border none
+default_border none
 # default_border pixel 2
 # default_border normal 2
 
 # set $bg     #0a0c10
-set $bg     #0d1117
+# set $bg     #0d1117
+set $bg     #000000
 set $fg     #c1c1c1
 set $hi     #7a828e
 set $ac     #323232
@@ -185,9 +198,9 @@ set $rd     #d9dee3
 set $id     #f9f8ff
 set $ce     #afffff
 set $sl     #71b7ff
-set $cb     #0d1117
+set $cb     #0a0c10
+# set $cb     #0d1117
 
-# client.focused          $ac     $ac     $tx     $ac
 client.focused          $cb     $cb     $tx     $cb
 client.unfocused        $bg     $bg     $fg     $bg
 client.focused_inactive $bg     $bg     $fg     $bg
@@ -196,12 +209,12 @@ client.placeholder      $bg     $bg     $bg     $bg
 
 bar {
         font pango:UbuntuMono Nerd Font 10
-        # font pango:EnvyCodeR Nerd Font Mono 10
         separator_symbol " "
-        # separator_symbol "*"
-# │
         position bottom
+
         status_command i3status -c /home/crab/.config/i3/i3status.conf
+        # status_command i3blocks -c /home/crab/.config/i3blocks/config_i3blocks
+
         colors {
             background $bg
             statusline $sl
@@ -221,14 +234,3 @@ bar {
 # client.urgent           #2f343a   #900000   #ffffff   #900000    #900000
 # client.placeholder      #000000   #0c0c0c   #ffffff   #000000    #0c0c0c
 # client.background       #ffffff
-
-# set $ac #ff9492
-# set $bg #232323
-# set $tx #26cd4d
-# set $ia #f0b72f
-# set $be #71b7ff
-# set $sl #323232
-
-# focused_workspace  $tx  $tx  $ac
-# active_workspace   $ac  $ac  $tx
-# inactive_workspace $ac  $ac  $tx

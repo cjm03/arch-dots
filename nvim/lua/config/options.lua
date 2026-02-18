@@ -1,8 +1,10 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.clipboard:append("unnamedplus")
+vim.opt.clipboard:append{ "unnamed", "unnamedplus" }
 vim.opt.inccommand = "split"
 vim.opt.swapfile = false
 vim.opt.number = true
@@ -18,13 +20,13 @@ vim.opt.cmdheight = 1
 vim.opt.background = "dark"
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "auto"
+vim.opt.completeopt = "menuone,noselect,preview"
 -- vim.opt.colorcolumn = "100"
 vim.opt.mouse = "a"
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.guicursor = ""
+vim.opt.splitright = true
 -- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#323232" })
 -- vim.cmd[[set completeopt+=menuone,noselect,popup]]
 vim.lsp.set_log_level("WARN")
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1

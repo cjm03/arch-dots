@@ -1,0 +1,7 @@
+---
+CompileFlags:
+  Add: [-xc, -Wall, -Wextra, -Wno-used-value]
+  Compiler: gcc
+Documentation:
+  CommentFormat: Doxygen
+...

@@ -6,6 +6,7 @@ set -x DEBUGINFOD_URLS "https://debuginfod.archlinux.org"
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -gx EDITOR nvim
 set -gx LANG en_US.UTF-8
+set -Ux SYSTEMD_EDITOR neovim
 
 fish_add_path /home/crab/.local/bin
 

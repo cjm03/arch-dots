@@ -16,12 +16,21 @@ return {
         config = function()
             require("nvim-web-devicons").setup()
         end
-    -- },
-    -- {
-    --     "nvim-mini/mini.tabline",
-    --     version = "*",
-    --     config = function()
-    --         require('mini.tabline').setup()
-    --     end
+    },
+    {
+        "3rd/image.nvim",
+        build = false,
+        config = function()
+            require('image').setup({
+                backend = "kitty",
+                processor = "magick_cli"
+            })
+        end
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = { preset = "helix", },
+        keys = {},
     }
 }

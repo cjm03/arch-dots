@@ -1,0 +1,30 @@
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.clipboard:append("unnamedplus")
+vim.opt.inccommand = "split"
+vim.opt.swapfile = false
+vim.opt.number = true
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
+vim.opt.relativenumber = false
+vim.opt.wrap = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.showmode = false
+vim.opt.cmdheight = 1
+vim.opt.background = "dark"
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "auto"
+-- vim.opt.colorcolumn = "100"
+vim.opt.mouse = "a"
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.guicursor = ""
+-- vim.api.nvim_set_hl(0, "CursorLine", { bg = "#323232" })
+-- vim.cmd[[set completeopt+=menuone,noselect,popup]]
+vim.lsp.set_log_level("WARN")
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

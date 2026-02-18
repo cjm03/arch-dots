@@ -1,7 +1,9 @@
 ---
 CompileFlags:
-  Add: [-xc, -Wall, -Wextra, -Wno-used-value]
+  Add: [-xc, -Wall, -Wextra, -Wno-used-value, -D_DEFAULT_SOURCE]
   Compiler: gcc
-Documentation:
-  CommentFormat: Doxygen
+  # Add: [-xc++, -Wall, -Wextra, -Wno-used-value]
+  # Compiler: g++
+# Documentation:
+#   CommentFormat: Doxygen
 ...

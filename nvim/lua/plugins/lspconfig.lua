@@ -68,10 +68,10 @@ return {
                 }
             },
 
-            -- {
-            --     "ast_grep", { capabilities = capabilities }
-            -- },
-            --
+            {
+                "ruby_lsp", { capabilities = capabilities }
+            },
+
             {
                 "rust_analyzer",
                 {
@@ -96,9 +96,9 @@ return {
             {
                 "clangd",
                 {
-                    cmd = { "clangd", "--background-index" }, -- "--function-arg-placeholders=0", "--clang-tidy" }, -- "--header-insertion=iwyu", "--completion-style=detailed", "--fallback-style=llvm", "--fallback-style=llvm" },
+                    cmd = { "clangd", "--background-index", "--pretty", "--function-arg-placeholders", "--header-insertion-decorators" }, -- "--function-arg-placeholders=0", "--clang-tidy" }, -- "--header-insertion=iwyu", "--completion-style=detailed", "--fallback-style=llvm", "--fallback-style=llvm" },
+                    filetypes = { "c", "cpp", "h", "cc", "hh" },
                     init_options = { usePlaceholders = true, completeUnimported = true, clangdFileStatus = true },
-                    filetypes = { "c", "h", "cpp" },
                     capabilities = capabilities,
 
                 }
