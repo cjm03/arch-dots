@@ -1,4 +1,24 @@
 -- return {
+--     "CosecSecCot/cosec-twilight.nvim",
+-- }
+
+return {
+    "uhs-robert/oasis.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require("oasis").setup({
+            -- style = "abyss",
+            style = "starlight",
+            styles = {
+                italic = false
+            },
+        })
+        vim.cmd("colorscheme oasis")
+    end
+}
+
+-- return {
 --     "rebelot/kanagawa.nvim",
 --     lazy = false,
 --     priority = 1000,
@@ -19,22 +39,6 @@
 --             }
 --         })
 --         vim.cmd("colorscheme kanagawa-dragon")
---     end
--- }
-
--- return {
---     "neko-night/nvim",
---     lazy = false,
---     priority = 1000,
---     config = function()
---         require('nekonight').setup({
---             style = "fire-obsidian",
---             styles = {
---                 keywords = { italic = false },
---             },
---             lualine_bold = true,
---         })
---         vim.cmd("colorscheme nekonight-fire-obsidian")
 --     end
 -- }
 
@@ -64,18 +68,3 @@
 --     end
 -- }
 
-return {
-    "uhs-robert/oasis.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-        require("oasis").setup({
-            -- style = "abyss",
-            style = "starlight",
-            styles = {
-                italic = false
-            },
-        })
-        vim.cmd("colorscheme oasis")
-    end
-}

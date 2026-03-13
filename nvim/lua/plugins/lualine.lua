@@ -55,7 +55,7 @@ return {
         require("lualine").setup({
             options = {
                 -- theme = custom_auto,
-                -- theme = "oasis_starlight",
+                -- theme = "auto",
                 theme = custom_oasis,
                 global_status = false,
                 section_separators = "",

@@ -27,9 +27,9 @@ return {
             ensure_installed = {
                 "clangd",
                 "pyright",
-                "ruby_lsp",
-                "asm_lsp",
-                "rust_analyzer",
+                -- "ruby_lsp",
+                -- "asm_lsp",
+                -- "rust_analyzer",
                 "html",
                 "lua_ls"
             },

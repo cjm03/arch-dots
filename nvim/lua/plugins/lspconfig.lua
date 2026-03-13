@@ -32,7 +32,7 @@ return {
             update_in_insert = false,
         })
 
-        -- vim.lsp.set_log_level("debug")
+        vim.lsp.set_log_level("trace")
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
         local capabilities = cmp_nvim_lsp.default_capabilities()
         local lsps = {
@@ -48,15 +48,15 @@ return {
                 }
             },
 
-            {
-                "asm_lsp",
-                {
-                    cmd = { "asm-lsp" },
-                    filetypes = { "asm", "s", "S" },
-                    root_markers = { ".asm-lsp.toml", ".git" },
-                    capabilities = capabilities,
-                }
-            },
+            -- {
+            --     "asm_lsp",
+            --     {
+            --         cmd = { "asm-lsp" },
+            --         filetypes = { "asm", "s", "S" },
+            --         root_markers = { ".asm-lsp.toml", ".git" },
+            --         capabilities = capabilities,
+            --     }
+            -- },
 
             {
                 "lua_ls",
@@ -68,37 +68,43 @@ return {
                 }
             },
 
-            {
-                "ruby_lsp", { capabilities = capabilities }
-            },
+            -- {
+            --     "ruby_lsp", { capabilities = capabilities }
+            -- },
 
-            {
-                "rust_analyzer",
-                {
-                    cmd = { "rust-analyzer"},
-                    filetypes = { "rust", "rs" },
-                    settings = {
-                        ["rust-analyzer"] = {
-                            imports = {
-                                granularity = { group = "module" },
-                                prefix = "self",
-                            },
-                            cargo = {
-                                buildScripts = { enable = true },
-                            },
-                            procMacro = { enable = true },
-                        }
-                    },
-                    capabilities = capabilities
-                }
-            },
+            -- {
+            --     "rust_analyzer",
+            --     {
+            --         cmd = { "rust-analyzer"},
+            --         filetypes = { "rust", "rs" },
+            --         settings = {
+            --             ["rust-analyzer"] = {
+            --                 imports = {
+            --                     granularity = { group = "module" },
+            --                     prefix = "self",
+            --                 },
+            --                 cargo = {
+            --                     buildScripts = { enable = true },
+            --                 },
+            --                 procMacro = { enable = true },
+            --             }
+            --         },
+            --         capabilities = capabilities
+            --     }
+            -- },
 
             {
                 "clangd",
                 {
-                    cmd = { "clangd", "--background-index", "--pretty", "--function-arg-placeholders", "--header-insertion-decorators" }, -- "--function-arg-placeholders=0", "--clang-tidy" }, -- "--header-insertion=iwyu", "--completion-style=detailed", "--fallback-style=llvm", "--fallback-style=llvm" },
-                    filetypes = { "c", "cpp", "h", "cc", "hh" },
-                    init_options = { usePlaceholders = true, completeUnimported = true, clangdFileStatus = true },
+                    cmd = {
+                        "clangd",
+                        "--background-index",
+                        "--pretty",
+                        "--header-insertion-decorators",
+                        "--completion-style=detailed"
+                    },
+                    filetypes = { "c", "cpp", "objc", "objcpp" },
+                    init_option = { usePlaceholders = true, completeUnimported = true, clangdFileStatus = true },
                     capabilities = capabilities,
 
                 }
